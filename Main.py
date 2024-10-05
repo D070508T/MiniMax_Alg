@@ -49,9 +49,6 @@ while True:
             t = (time.perf_counter() - startTime) * 1000000
             timeToChoose[int(empty)-1].append(t)
 
-            if t == 0:
-                timeToChoose[int(empty)-1].append(0)
-
             # Choose a random move (player 2)
             while True:
                 num = random.randint(0, 8)
