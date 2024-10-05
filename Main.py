@@ -46,8 +46,7 @@ while True:
             # Choose a move and record time
             startTime = time.perf_counter()
             move = minimax.getBestMove(False)
-            t = (time.perf_counter() - startTime) * 1000000
-            timeToChoose[int(empty)-1].append(t)
+            timeToChoose[empty-1].append((time.perf_counter() - startTime) * 1000000)
 
             # Choose a random move (player 2)
             while True:
@@ -60,8 +59,7 @@ while True:
             if board.state() == 'continue':
                 startTime = time.perf_counter()
                 move = minimax.getBestMove(True)
-                timeToChoose[empty - 2].append((time.perf_counter() - startTime) * 1000000)
-
+                timeToChoose[empty-2].append((time.perf_counter() - startTime) * 1000000)
                 board.place(move, 'X')
 
     # Record total time taken
@@ -71,6 +69,12 @@ while True:
     for i in range(9):
         average = sum(timeToChoose[i]) / x
         print(f'Average time taken for {i+1} available move(s): {round(average, 7)} microseconds')
+
+    for movesLeft in range(9):
+        print(f'Time taken for {movesLeft+1} moves left:')
+        for time in timeToChoose[movesLeft]:
+            print(time)
+        print()
 
     # Display total time
     print(f'''time elapsed: {round(elapsed * 1000000, 7)} microseconds
