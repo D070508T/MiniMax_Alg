@@ -11,11 +11,12 @@ from MiniMax4 import MiniMax4
 while True:
     timeToChoose = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    ver = input('Which version of MiniMax would you like to test (1-5): ')
+    ver = input('Which version of MiniMax would you like to test (1-4): ')
     x = int(input('How many times would you like to run: '))
 
     start = time.perf_counter()
     for i in range(x):
+        # Reset board and choose algorithm version
         board = Board()
         if ver == '1':
             minimax = MiniMax1(board)
@@ -27,22 +28,22 @@ while True:
             minimax = MiniMax4(board)
 
         while board.state() == 'continue':
-            empty = 0
-            for j in range(9):
-                if board.board[j] == ' ':
-                    empty += 1
+            # Count how many empty spots there are
+            empty = board.board.count(' ')
 
+            # Choose a move and record time
             startTime = time.perf_counter()
             move = minimax.getBestMove(False)
             timeToChoose[empty] += (time.perf_counter() - startTime) * 1000000
 
+            # Choose a random move (player 2)
             while True:
                 num = random.randint(0, 8)
                 if board.board[num] == ' ':
+                    board.place(num, 'O')
                     break
 
-            board.place(num, 'O')
-
+            # If the game isn't over, choose a move and record time
             if board.state() == 'continue':
                 startTime = time.perf_counter()
                 move = minimax.getBestMove(True)
@@ -50,13 +51,13 @@ while True:
 
                 board.place(move, 'X')
 
+    # Record total time taken
     elapsed = time.perf_counter() - start
 
+    # Display times for every move
     for i in range(10):
         print(f'Average time taken for {i} available move(s): {round(timeToChoose[i] / x, 7)} microseconds')
 
-    total = 0
-    for call in timeToChoose:
-        total += call
-
-    print(f'time elapsed: {round(elapsed * 1000000, 7)} microseconds')
+    # Display total time
+    print(f'''time elapsed: {round(elapsed * 1000000, 7)} microseconds
+time per run: {round(elapsed/x * 1000000, 7)}''')

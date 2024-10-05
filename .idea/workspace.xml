@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eacc85a-258c-41d3-9bbe-8b420c1bf3ff" name="Changes" comment="First Commit" />
+    <list default="true" id="1eacc85a-258c-41d3-9bbe-8b420c1bf3ff" name="Changes" comment="First Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/MiniMax_Alg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MiniMax_Alg.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/Board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniMax1.py" beforeDir="false" afterPath="$PROJECT_DIR$/MiniMax1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniMax2.py" beforeDir="false" afterPath="$PROJECT_DIR$/MiniMax2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniMax3.py" beforeDir="false" afterPath="$PROJECT_DIR$/MiniMax3.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,12 +29,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/D070508T/MiniMax_Alg.git",
-    "accountId": "2a9d048d-549c-4e49-a765-ee16d38f7d92"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;D070508T&quot;
   }
-}]]></component>
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/D070508T/MiniMax_Alg.git&quot;,
+    &quot;accountId&quot;: &quot;c2d69651-19c1-4d33-b62a-3befc079dd5f&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -37,19 +52,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Board.executor": "Run",
-    "Python.Main.executor": "Run",
-    "Python.Main1.executor": "Run",
-    "Python.MiniMax.executor": "Run",
-    "Python.MiniMax1.executor": "Run",
-    "Python.MiniMax4.executor": "Run",
-    "Python.MiniMax5.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Board.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MiniMax.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MiniMax1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MiniMax4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MiniMax5.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,6 +91,17 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit" />
