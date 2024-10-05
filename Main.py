@@ -6,12 +6,16 @@ from MiniMax1 import MiniMax1
 from MiniMax2 import MiniMax2
 from MiniMax3 import MiniMax3
 from MiniMax4 import MiniMax4
+from MiniMax5 import MiniMax5
+from MiniMax6 import MiniMax6
+from MiniMax7 import MiniMax7
+from MiniMax8 import MiniMax8
 
 # Main Loop
 while True:
     timeToChoose = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    ver = input('Which version of MiniMax would you like to test (1-4): ')
+    ver = input('Which version of MiniMax would you like to test (1-8): ')
     x = int(input('How many times would you like to run: '))
 
     start = time.perf_counter()
@@ -24,8 +28,16 @@ while True:
             minimax = MiniMax2(board)
         elif ver == '3':
             minimax = MiniMax3(board)
-        else:
+        elif ver == '4':
             minimax = MiniMax4(board)
+        elif ver == '5':
+            minimax = MiniMax5(board)
+        elif ver == '6':
+            minimax = MiniMax6(board)
+        elif ver == '7':
+            minimax = MiniMax7(board)
+        else:
+            minimax = MiniMax8(board)
 
         while board.state() == 'continue':
             # Count how many empty spots there are
