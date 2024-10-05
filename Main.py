@@ -77,4 +77,4 @@ while True:
 
     # Display total time
     print(f'''time elapsed: {round(elapsed * 1000000, 7)} microseconds
-time per run: {round(elapsed/x * 1000000, 7)}''')
+time per run: {round(elapsed/x * 1000000, 7)} microseconds''')
