@@ -13,7 +13,7 @@ from MiniMax8 import MiniMax8
 
 # Main Loop
 while True:
-    timeToChoose = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    timeToChoose = [[], [], [], [], [], [], [], [], []]
 
     ver = input('Which version of MiniMax would you like to test (1-8): ')
     x = int(input('How many times would you like to run: '))
@@ -46,7 +46,11 @@ while True:
             # Choose a move and record time
             startTime = time.perf_counter()
             move = minimax.getBestMove(False)
-            timeToChoose[empty] += (time.perf_counter() - startTime) * 1000000
+            t = (time.perf_counter() - startTime) * 1000000
+            timeToChoose[int(empty)-1].append(t)
+
+            if t == 0:
+                timeToChoose[int(empty)-1].append(0)
 
             # Choose a random move (player 2)
             while True:
@@ -59,7 +63,7 @@ while True:
             if board.state() == 'continue':
                 startTime = time.perf_counter()
                 move = minimax.getBestMove(True)
-                timeToChoose[empty - 1] += (time.perf_counter() - startTime) * 1000000
+                timeToChoose[empty - 2].append((time.perf_counter() - startTime) * 1000000)
 
                 board.place(move, 'X')
 
@@ -67,8 +71,9 @@ while True:
     elapsed = time.perf_counter() - start
 
     # Display times for every move
-    for i in range(10):
-        print(f'Average time taken for {i} available move(s): {round(timeToChoose[i] / x, 7)} microseconds')
+    for i in range(9):
+        average = sum(timeToChoose[i]) / x
+        print(f'Average time taken for {i+1} available move(s): {round(average, 7)} microseconds')
 
     # Display total time
     print(f'''time elapsed: {round(elapsed * 1000000, 7)} microseconds
