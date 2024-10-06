@@ -8,16 +8,6 @@ class Board:
         else:
             self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-    # Function that takes a number and a character and places that character in the correct spot of the given number
-    def place(self, num, char):
-        oldBoard = self.board
-
-        self.board = self.board[:num] + char
-
-        # If we are not modifying the last character, add the rest of the characters onto the new board
-        if num < 8:
-            self.board += oldBoard[num+1:]
-
     # Function that returns the state of the board. Who won, or if the game is still continuing, or if it's a tie
     def state(self):
         # Loop through all winning positions
