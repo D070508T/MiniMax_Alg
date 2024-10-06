@@ -1,5 +1,8 @@
 # MiniMax Alpha-Beta Pruning and Depth Limit and Move Order
 
+from util import board_state
+
+
 class MiniMax5:
     # Constructor
     def __init__(self, board):
@@ -9,7 +12,7 @@ class MiniMax5:
     def availableMoves(self):
         moves = []
         for i in (4, 0, 2, 6, 8, 1, 3, 5, 7):
-            if self.board.board[i] == ' ':
+            if self.board[i] == ' ':
                 moves.append(i)
         return moves
 
@@ -24,9 +27,9 @@ class MiniMax5:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False, 4)    # With limit 4
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is 1 (meaning it's already a MAX move), automatically return it
                 if score == 1:
@@ -42,9 +45,9 @@ class MiniMax5:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.board[move] = 'O'
+                self.board[move] = 'O'
                 score = self.miniMax(True, 4)    # With limit 4
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it
                 if score == -1:
@@ -58,7 +61,7 @@ class MiniMax5:
 
     # Recursive method that checks score
     def miniMax(self, maximizing, limit):
-        state = self.board.state()
+        state = board_state(self.board)
 
         # If the game is over, return a value for the move
         if state == 'X':
@@ -75,9 +78,9 @@ class MiniMax5:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False, limit-1)    # Lower limit by 1
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MAX move), automatically return it
                 if score == 1:
@@ -89,9 +92,9 @@ class MiniMax5:
             bestScore = 2
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False, limit-1)    # Lower limit by 1
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it
                 if score == -1:

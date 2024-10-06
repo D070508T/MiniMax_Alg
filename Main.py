@@ -1,7 +1,7 @@
 # Importing Libraries
 import random
 import time
-from Board import Board
+from util import board_state
 from MiniMax1 import MiniMax1
 from MiniMax2 import MiniMax2
 from MiniMax3 import MiniMax3
@@ -25,7 +25,7 @@ while True:
     start = time.perf_counter()
     for i in range(x):
         # Reset board and choose algorithm version
-        board = Board()
+        board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         if ver == '1':
             minimax = MiniMax1(board)
         elif ver == '2':
@@ -43,9 +43,9 @@ while True:
         else:
             minimax = MiniMax8(board)
 
-        while board.state() == 'continue':
+        while board_state(board) == 'continue':
             # Count how many empty spots there are
-            empty = board.board.count(' ')
+            empty = board.count(' ')
 
             # Choose a move and record time
             startTime = time.perf_counter()
@@ -55,16 +55,16 @@ while True:
             # Choose a random move (player 2)
             while True:
                 num = random.randint(0, 8)
-                if board.board[num] == ' ':
-                    board.board[num] = 'O'
+                if board[num] == ' ':
+                    board[num] = 'O'
                     break
 
             # If the game isn't over, choose a move and record time
-            if board.state() == 'continue':
+            if board_state(board) == 'continue':
                 startTime = time.perf_counter()
                 move = minimax.getBestMove(True)
                 timeToChoose[empty-2].append((time.perf_counter() - startTime) * 1000000)
-                board.board[move] = 'X'
+                board[move] = 'X'
 
     # Record total time taken
     elapsed = time.perf_counter() - start

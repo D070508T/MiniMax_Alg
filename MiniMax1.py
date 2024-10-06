@@ -1,5 +1,8 @@
 # MiniMax Base Version
 
+from util import board_state
+
+
 class MiniMax1:
     # Constructor
     def __init__(self, board):
@@ -9,7 +12,7 @@ class MiniMax1:
     def availableMoves(self):
         moves = []
         for spot in range(9):
-            if self.board.board[spot] == ' ':
+            if self.board[spot] == ' ':
                 moves.append(spot)
         return moves
 
@@ -24,9 +27,9 @@ class MiniMax1:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False)
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If score is greater, save this as the best move and score
                 if score > bestScore:
@@ -37,10 +40,11 @@ class MiniMax1:
 
             # Go through all moves
             for move in self.availableMoves():
+
                 # Check score and un-do move
-                self.board.board[move] = 'O'
+                self.board[move] = 'O'
                 score = self.miniMax(True)
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If score is lower, save this as the best move and score
                 if score < bestScore:
@@ -51,7 +55,7 @@ class MiniMax1:
 
     # Recursive method that checks score
     def miniMax(self, maximizing):
-        state = self.board.state()
+        state = board_state(self.board)
 
         # If the game is over, return a value for the move
         if state == 'X':
@@ -68,17 +72,17 @@ class MiniMax1:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False)
-                self.board.board[move] = ' '
+                self.board[move] = ' '
                 bestScore = max(bestScore, score)
         else:
             bestScore = 2
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.board[move] = 'O'
+                self.board[move] = 'O'
                 score = self.miniMax(True)
-                self.board.board[move] = ' '
+                self.board[move] = ' '
                 bestScore = min(bestScore, score)
 
         return bestScore

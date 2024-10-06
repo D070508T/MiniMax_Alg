@@ -1,5 +1,8 @@
 # MiniMax Alpha-Beta Pruning and Depth limit and Move order and Transposition tables
 
+from util import board_state
+
+
 class MiniMax8:
     # Constructor
     def __init__(self, board):
@@ -10,7 +13,7 @@ class MiniMax8:
     def availableMoves(self):
         moves = []
         for i in (4, 0, 2, 6, 8, 1, 3, 5, 7):
-            if self.board.board[i] == ' ':
+            if self.board[i] == ' ':
                 moves.append(i)
         return moves
 
@@ -25,9 +28,9 @@ class MiniMax8:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False, 4)    # With limit 4
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is 1 (meaning it's already a MAX move), automatically return it
                 if score == 1:
@@ -43,9 +46,9 @@ class MiniMax8:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.board[move] = 'O'
+                self.board[move] = 'O'
                 score = self.miniMax(True, 4)    # With limit 4
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it
                 if score == -1:
@@ -59,13 +62,13 @@ class MiniMax8:
 
     # Recursive method that checks score
     def miniMax(self, maximizing, limit):
-        board_tuple = tuple(self.board.board)
+        board_tuple = tuple(self.board)
         
         # If the board has already been calculated, return the previous result
         if board_tuple in self.tables:
             return self.tables[board_tuple]
 
-        state = self.board.state()
+        state = board_state(self.board)
 
         # If the game is over, return a value for the move and save the board
         if state == 'X':
@@ -85,9 +88,9 @@ class MiniMax8:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.board[move] = 'X'
+                self.board[move] = 'X'
                 score = self.miniMax(False, limit-1)    # Lower limit by 1
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is 1 (meaning it's already a MAX move), automatically return it and save it
                 if score == 1:
@@ -100,9 +103,9 @@ class MiniMax8:
             bestScore = 2
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.board[move] = 'O'
+                self.board[move] = 'O'
                 score = self.miniMax(True, limit-1)    # Lower limit by 1
-                self.board.board[move] = ' '
+                self.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it and save it
                 if score == -1:

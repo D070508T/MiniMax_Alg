@@ -2,11 +2,8 @@
 
 class Board:
     # Constructor that builds the board and sets it to empty
-    def __init__(self, board=None):
-        if board:
-            self.board = board.board
-        else:
-            self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    def __init__(self):
+        self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
     # Function that returns the state of the board. Who won, or if the game is still continuing, or if it's a tie
     def state(self):
