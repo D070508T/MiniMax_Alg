@@ -1,3 +1,5 @@
+# MAIN CODE
+
 # Importing Important Libraries
 import random
 import time
