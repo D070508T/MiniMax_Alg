@@ -18,6 +18,10 @@ while True:
     ver = input('Which version of MiniMax would you like to test (1-8): ')
     x = int(input('How many times would you like to run: '))
 
+    if not hasattr(time, 'perf_counter'):
+        del time
+        import time
+
     start = time.perf_counter()
     for i in range(x):
         # Reset board and choose algorithm version
@@ -52,7 +56,7 @@ while True:
             while True:
                 num = random.randint(0, 8)
                 if board.board[num] == ' ':
-                    board.place(num, 'O')
+                    board.board[num] = 'O'
                     break
 
             # If the game isn't over, choose a move and record time
@@ -60,7 +64,7 @@ while True:
                 startTime = time.perf_counter()
                 move = minimax.getBestMove(True)
                 timeToChoose[empty-2].append((time.perf_counter() - startTime) * 1000000)
-                board.place(move, 'X')
+                board.board[move] = 'X'
 
     # Record total time taken
     elapsed = time.perf_counter() - start

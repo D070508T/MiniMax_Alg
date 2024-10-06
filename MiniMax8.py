@@ -25,9 +25,9 @@ class MiniMax8:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.place(move, 'X')
+                self.board.board[move] = 'X'
                 score = self.miniMax(False, 4)    # With limit 4
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is 1 (meaning it's already a MAX move), automatically return it
                 if score == 1:
@@ -43,9 +43,9 @@ class MiniMax8:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.place(move, 'O')
+                self.board.board[move] = 'O'
                 score = self.miniMax(True, 4)    # With limit 4
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it
                 if score == -1:
@@ -59,21 +59,23 @@ class MiniMax8:
 
     # Recursive method that checks score
     def miniMax(self, maximizing, limit):
+        board_tuple = tuple(self.board.board)
+        
         # If the board has already been calculated, return the previous result
-        if self.board.board in self.tables:
-            return self.tables[self.board.board]
+        if board_tuple in self.tables:
+            return self.tables[board_tuple]
 
         state = self.board.state()
 
         # If the game is over, return a value for the move and save the board
         if state == 'X':
-            self.tables[self.board.board] = 1
+            self.tables[board_tuple] = 1
             return 1
         elif state == 'O':
-            self.tables[self.board.board] = -1
+            self.tables[board_tuple] = -1
             return -1
         elif state == 'tie':
-            self.tables[self.board.board] = 0
+            self.tables[board_tuple] = 0
             return 0
 
         # If it's the AI's turn get the highest score, otherwise get the lowest score
@@ -83,13 +85,13 @@ class MiniMax8:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.place(move, 'X')
+                self.board.board[move] = 'X'
                 score = self.miniMax(False, limit-1)    # Lower limit by 1
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is 1 (meaning it's already a MAX move), automatically return it and save it
                 if score == 1:
-                    self.tables[self.board.board] = 1
+                    self.tables[board_tuple] = 1
                     return 1
 
                 # If score is greater, save it as the best score
@@ -98,18 +100,18 @@ class MiniMax8:
             bestScore = 2
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.place(move, 'O')
+                self.board.board[move] = 'O'
                 score = self.miniMax(True, limit-1)    # Lower limit by 1
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it and save it
                 if score == -1:
-                    self.tables[self.board.board] = -1
+                    self.tables[board_tuple] = -1
                     return -1
 
                 # If score is greater, save it as the best score
                 bestScore = min(bestScore, score)
 
         # Save the board and value
-        self.tables[self.board.board] = bestScore
+        self.tables[board_tuple] = bestScore
         return bestScore

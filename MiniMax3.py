@@ -24,9 +24,9 @@ class MiniMax3:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.place(move, 'X')
-                score = self.miniMax(False, 4)  # With limit 4
-                self.board.place(move, ' ')
+                self.board.board[move] = 'X'
+                score = self.miniMax(False, 4)    # With limit 4
+                self.board.board[move] = ' '
 
                 # If score is greater, save this as the best move and score
                 if score > bestScore:
@@ -38,9 +38,9 @@ class MiniMax3:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.place(move, 'O')
-                score = self.miniMax(True, 4)   # With limit 4
-                self.board.place(move, ' ')
+                self.board.board[move] = 'O'
+                score = self.miniMax(True, 4)    # With limit 4
+                self.board.board[move] = ' '
 
                 # If score is lower, save this as the best move and score
                 if score < bestScore:
@@ -68,17 +68,17 @@ class MiniMax3:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.place(move, 'X')
+                self.board.board[move] = 'X'
                 score = self.miniMax(False, limit-1)    # Lower limit by 1
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
                 bestScore = max(bestScore, score)
         else:
             bestScore = 2
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.place(move, 'O')
-                score = self.miniMax(True, limit-1)    # Lower limit by 1
-                self.board.place(move, ' ')
+                self.board.board[move] = 'O'
+                score = self.miniMax(False, limit-1)    # Lower limit by 1
+                self.board.board[move] = ' '
                 bestScore = min(bestScore, score)
 
         return bestScore

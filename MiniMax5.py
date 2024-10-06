@@ -24,9 +24,9 @@ class MiniMax5:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.place(move, 'X')
+                self.board.board[move] = 'X'
                 score = self.miniMax(False, 4)    # With limit 4
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is 1 (meaning it's already a MAX move), automatically return it
                 if score == 1:
@@ -42,9 +42,9 @@ class MiniMax5:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score and un-do move
-                self.board.place(move, 'O')
+                self.board.board[move] = 'O'
                 score = self.miniMax(True, 4)    # With limit 4
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it
                 if score == -1:
@@ -75,9 +75,9 @@ class MiniMax5:
             # Go through all moves
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.place(move, 'X')
+                self.board.board[move] = 'X'
                 score = self.miniMax(False, limit-1)    # Lower limit by 1
-                self.board.place(move, ' ')
+                self.board.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MAX move), automatically return it
                 if score == 1:
@@ -89,9 +89,9 @@ class MiniMax5:
             bestScore = 2
             for move in self.availableMoves():
                 # Check score, un-do move, and save best score
-                self.board.place(move, 'O')
-                score = self.miniMax(True, limit-1)    # Lower limit by 1
-                self.board.place(move, ' ')
+                self.board.board[move] = 'X'
+                score = self.miniMax(False, limit-1)    # Lower limit by 1
+                self.board.board[move] = ' '
 
                 # If the score is -1 (meaning it's already a MIN move), automatically return it
                 if score == -1:

@@ -6,7 +6,7 @@ class Board:
         if board:
             self.board = board.board
         else:
-            self.board = '         '
+            self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
     # Function that takes a number and a character and places that character in the correct spot of the given number
     def place(self, num, char):
