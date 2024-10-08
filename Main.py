@@ -24,6 +24,9 @@ while True:
         del time
         import time
 
+    if not hasattr(time, 'perf_counter'):
+        del time
+        import time
     start = time.perf_counter()
     for i in range(x):
         # Reset board and choose algorithm version
